@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "PORT=1234 npx nodemon index.js",
-    "db:up": "npx knex migrate:up",
-    "db:down": "npx knex migrate:down",
-    "db:seed": "npx knex seed:run"
+    "dev": "npx nodemon index.js",
+    "db:up": "npx --experimental-modules knex migrate:up",
+    "db:down": "npx --node-arg='--experimental-modules' knex migrate:down",
+    "db:seed": "npx --node-arg='--experimental-modules' knex seed:run"
   },
   "keywords": [],
   "author": "",
