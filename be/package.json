@@ -1,26 +1,26 @@
 {
-  "name": "test003",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon index.js",
-    "db:up": "npx --experimental-modules knex migrate:up",
-    "db:down": "npx --node-arg='--experimental-modules' knex migrate:down",
-    "db:seed": "npx --node-arg='--experimental-modules' knex seed:run"
-  },
-  "engines": {
-    "node": ">=12.10"
-  },
+  "author": "Sergej Kukharev",
   "cpu": [
     "x64"
   ],
+  "description": "",
+  "engines": {
+    "node": ">=12.10"
+  },
   "flat": true,
-  "private": true,
   "keywords": [],
-  "author": "Sergej Kukharev",
   "license": "UNLICENSED",
+  "main": "index.js",
+  "name": "test003",
+  "private": true,
+  "scripts": {
+    "db:down": "npx --experimental-modules knex migrate:down",
+    "db:seed": "npx --experimental-modules knex seed:run",
+    "db:up": "npx --experimental-modules knex migrate:up",
+    "dev": "npx nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0",
   "dependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",
