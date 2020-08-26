@@ -14,14 +14,13 @@
   "name": "test003",
   "private": true,
   "scripts": {
-    "db:down": "npx --experimental-modules knex migrate:down",
-    "db:seed": "npx --experimental-modules knex seed:run",
-    "db:up": "npx --experimental-modules knex migrate:up",
+    "db:down": "npx knex --debug migrate:down",
+    "db:seed": "npx knex --debug seed:run",
+    "db:up": "npx knex --debug migrate:up",
     "dev": "npx nodemon index.js",
-    "draft": "node --experimental-modules draft.js",
+    "draft": "npx nodemon draft.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "module",
   "version": "1.0.0",
   "dependencies": {
     "@babel/cli": "^7.8.4",

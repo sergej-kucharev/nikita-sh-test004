@@ -1,12 +1,12 @@
-import debug from 'debug';
-import sqlite3 from 'sqlite3';
+const debug = require('debug');
+const sqlite3 = require('sqlite3');
 
 const log = debug('db:knex');
 
-export default {
+module.exports = {
   client: 'sqlite3',
   connection: {
-    filename: './db/knex/data/dev.sqlite3',
+    filename: './db/knex/data/development.sqlite3',
   },
   migrations: {
     directory: './db/knex/migrations',

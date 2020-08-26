@@ -1,4 +1,4 @@
-export default {
+module.exports = {
 	up: async (knex) => {
 		const exists = await knex.schema.hasTable('auth');
 		return exists || await knex.schema.createTable('auth', (table) => {

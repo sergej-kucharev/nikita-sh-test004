@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   seed: async (knex) => {
     await knex('auth').del();
     await knex('auth').insert([

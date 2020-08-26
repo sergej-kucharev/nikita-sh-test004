@@ -1,5 +1,5 @@
-'use strict';
+const { knex } = require('./db/knex');
 
-import { knex } from './db/knex/index.mjs';
-
-console.log(kenx.select(knex.fn.now()));
+(async () => {
+    console.log(await knex.select(knex.fn.now()).timeout(1000));
+})();
