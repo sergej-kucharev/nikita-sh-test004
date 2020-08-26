@@ -1,6 +1,6 @@
-import { Model, } from 'objection';
+import objection from 'objection';
 
-export class Auth extends Model {
+export default class Auth extends objection.Model {
 	static get tableName() { return 'auth'; };
 	static get idColumn() { return 'authId'; };
 	static get jsonSchema() { 

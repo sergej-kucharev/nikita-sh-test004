@@ -18,8 +18,10 @@
     "db:seed": "npx --experimental-modules knex seed:run",
     "db:up": "npx --experimental-modules knex migrate:up",
     "dev": "npx nodemon index.js",
+    "draft": "node --experimental-modules draft.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "version": "1.0.0",
   "dependencies": {
     "@babel/cli": "^7.8.4",
