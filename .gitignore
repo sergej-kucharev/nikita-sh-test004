@@ -2,4 +2,6 @@
 packages-cache/
 node_modules/
 
+be/db/knex/data/*.sqlite3
+
 .DS_Store
