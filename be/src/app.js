@@ -10,7 +10,7 @@ const port = process.env.PORT || 4000;
 const root = __dirname;
 
 import route from './route/';
-import api from './api/';
+import api from './routes';
 import { knex, models, } from './lib/db/'; 
 
 dotenv.config();

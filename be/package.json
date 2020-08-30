@@ -17,9 +17,9 @@
     "db:down": "npx knex --debug migrate:down",
     "db:seed": "npx knex --debug seed:run",
     "db:up": "npx knex --debug migrate:up",
-    "dev": "npx nodemon index.js",
-    "draft": "npx nodemon draft.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "npx nodemon index.js",
+    "start:draft": "npx nodemon draft.js",
+    "test": "npx jest"
   },
   "version": "1.0.0",
   "dependencies": {
