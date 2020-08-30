@@ -14,10 +14,10 @@
   "name": "test003",
   "private": true,
   "scripts": {
-    "db:down": "npx knex migrate:down",
-    "db:seed": "npx knex seed:run",
-    "db:up": "npx knex migrate:up",
-    "db": "yarn run db:down && yarn run db:up && yarn run db:seed",
+    "db:knex:migrate:down": "npx knex migrate:down",
+    "db:knex:migrate:up": "npx knex migrate:up",
+    "db:knex:seed": "npx knex seed:run",
+    "db:knex": "yarn run db:down && yarn run db:up && yarn run db:seed",
     "start:dev": "npx nodemon --inspect --exec babel-node index.js",
     "start:draft": "npx nodemon --inspect --exec babel-node draft.js",
     "test": "npx jest"
