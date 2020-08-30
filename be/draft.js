@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 require('@babel/register');
 
 const { knex, models, } = require('./db/knex');
