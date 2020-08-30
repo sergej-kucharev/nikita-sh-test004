@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import debug from 'debug';
-import process from 'process';
+import { env, } from 'process';
 import http from 'http';
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -9,14 +9,13 @@ import cors from 'cors';
 import passport from 'passport';
 import session from 'express-session';
 import swig from 'swig';
+import Logger from './logger';
 
+const logger = Logger('app');
 const app = express();
 
-import app from './lib/express/';
-
-const log = debug('app:server');
-const mode = process.env.NODE_ENV || 'dev';
-const port = process.env.PORT || 4000;
+const mode = env.NODE_ENV || 'dev';
+const port = env.PORT || 4000;
 const root = __dirname;
 
 import route from './route/';
