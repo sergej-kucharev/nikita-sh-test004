@@ -1,5 +1,5 @@
-import Debug from 'debug';
 import sqlite3 from 'sqlite3';
+import Logger from '../../../src/logger';
 
 export const client = 'sqlite3';
 export const connection = {
@@ -19,13 +19,7 @@ export const asyncStackTraces = true;
 export const fetchAsString = [ 'clob', ];
 export const useNullAsDefault = true;
 
-const debug = Debug('db:knex');
-export const log = {
-  warn(message) { debug(`[warn]: ${ message }`); },
-  error(message) { debug(`[error]: ${ message }`); },
-  deprecate(message) { debug(`[deprecate]: ${ message }`); },
-  debug(message) { debug(`[debug]: ${ message }`); },
-};
+export const log = Logger('db:knex');
 
 // export const pool = {
 //   min: 0,

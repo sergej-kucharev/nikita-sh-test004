@@ -1,8 +1,18 @@
-import app from './lib/express/';
 import dotenv from 'dotenv';
 import debug from 'debug';
-import http from 'http';
 import process from 'process';
+import http from 'http';
+import express from 'express';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import passport from 'passport';
+import session from 'express-session';
+import swig from 'swig';
+
+const app = express();
+
+import app from './lib/express/';
 
 const log = debug('app:server');
 const mode = process.env.NODE_ENV || 'dev';
