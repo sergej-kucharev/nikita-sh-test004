@@ -12,6 +12,9 @@ be-clean:
 be-dev:
 	cd ./be && yarn run start:dev
 
+be-draft:
+	cd ./be && yarn run start:draft
+
 be-init:
 	cd ./be && yarn run db:up && yarn run db:seed
 

@@ -1,9 +1,9 @@
-const debug = require('debug');
-const sqlite3 = require('sqlite3');
+import Debug from 'debug';
+import sqlite3 from 'sqlite3';
 
-const log = debug('db:knex');
+const debug = Debug('db:knex');
 
-module.exports = {
+const config = {
   client: 'sqlite3',
   connection: {
     filename: './db/knex/data/development.sqlite3',
@@ -21,13 +21,17 @@ module.exports = {
   fetchAsString: [ 'clob', ],
   useNullAsDefault: true,
   log: {
-    warn(message) { log(`[warn]: ${ message }`); },
-    error(message) { log(`[error]: ${ message }`); },
-    deprecate(message) { log(`[deprecate]: ${ message }`); },
-    debug(message) { log(`[debug]: ${ message }`); },
+    warn(message) { debug(`[warn]: ${ message }`); },
+    error(message) { debug(`[error]: ${ message }`); },
+    deprecate(message) { debug(`[deprecate]: ${ message }`); },
+    debug(message) { debug(`[debug]: ${ message }`); },
   },
   // pool: {
   //   min: 0,
   //   max: 7,
   // },
+};
+
+module.exports = {
+  ...config,
 };

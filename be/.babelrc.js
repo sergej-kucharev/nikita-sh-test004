@@ -1,7 +1,6 @@
 module.exports = (api) => {
     api.assertVersion("^7.2");
     api.cache.never();
-
     return {
         "plugins": [
             [ "@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true, } ],
@@ -32,7 +31,18 @@ module.exports = (api) => {
             "@babel/plugin-transform-runtime",
         ],
         "presets": [
-            [ "@babel/preset-env", { "debug": true, "targets": "> 0.25%, not dead", "useBuiltIns": "entry", } ],
+            [
+                "@babel/preset-env",
+                {
+                    "debug": false, //!api.env("production"),
+                    "targets": {
+                        "esmodules": true,
+                        "node": true,
+                    },
+                    // "useBuiltIns": "entry",
+                }
+            ],
+            // [ "@babel/preset-env", { "debug": true, "targets": "> 0.25%, not dead", "useBuiltIns": "entry", } ],
         ],
     };
 };
