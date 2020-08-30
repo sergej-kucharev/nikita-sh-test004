@@ -1,6 +1,9 @@
 .env
-packages-cache/
+
 node_modules/
+
+babel-cache/
+packages-cache/
 
 be/db/knex/data/*.sqlite3
 

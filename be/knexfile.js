@@ -1,4 +1,4 @@
-// Update with your config settings.
+require('babel-register');
 
 const dotenv = require('dotenv');
 const sqlite3 = require('./db/knex/config/development.sqlite3.js');

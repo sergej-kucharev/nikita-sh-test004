@@ -1,6 +1,6 @@
-const { Model, } = require('objection');
+import { Model, } from 'objection';
 
-module.exports = class Auth extends Model {
+export default class extends Model {
 	static get tableName() { return 'auth'; };
 	static get idColumn() { return 'authId'; };
 	static get jsonSchema() { 

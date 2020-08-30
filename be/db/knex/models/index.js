@@ -1,3 +1,1 @@
-module.exports = {
-    Auth: require('./auth.js'),
-};
+export { default as Auth, } from './auth';

@@ -14,9 +14,10 @@
   "name": "test003",
   "private": true,
   "scripts": {
-    "db:down": "npx knex --debug migrate:down",
-    "db:seed": "npx knex --debug seed:run",
-    "db:up": "npx knex --debug migrate:up",
+    "knex": "npx @babel/node node_modules/.bin/knex",
+    "db:down": "yarn run knex --debug migrate:down",
+    "db:seed": "yarn run knex --debug seed:run",
+    "db:up": "yarn run knex --debug migrate:up",
     "start:dev": "npx nodemon index.js",
     "start:draft": "npx nodemon draft.js",
     "test": "npx jest"
@@ -25,6 +26,7 @@
   "dependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",
+    "@babel/node": "^7.10.5",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/plugin-proposal-do-expressions": "^7.8.3",
@@ -79,60 +81,6 @@
     "sqlite3": "^4.1.1",
     "swig": "^1.4.2",
     "validator": "^13.0.0"
-  },
-  "babel": {
-    "plugins": [
-      [
-        "@babel/plugin-proposal-decorators",
-        {
-          "decoratorsBeforeExport": true
-        }
-      ],
-      "@babel/plugin-proposal-optional-chaining",
-      "@babel/plugin-proposal-nullish-coalescing-operator",
-      "@babel/plugin-proposal-export-namespace-from",
-      "@babel/plugin-proposal-export-default-from",
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-throw-expressions",
-      "@babel/plugin-proposal-private-methods",
-      "@babel/plugin-proposal-partial-application",
-      "@babel/plugin-transform-arrow-functions",
-      "@babel/plugin-transform-exponentiation-operator",
-      "@babel/plugin-proposal-numeric-separator",
-      "@babel/plugin-transform-property-literals",
-      "@babel/plugin-proposal-logical-assignment-operators",
-      "@babel/plugin-proposal-function-sent",
-      "@babel/plugin-proposal-function-bind",
-      "@babel/plugin-proposal-do-expressions",
-      [
-        "@babel/plugin-proposal-pipeline-operator",
-        {
-          "proposal": "minimal"
-        }
-      ],
-      "transform-inline-consecutive-adds",
-      "transform-inline-environment-variables",
-      "transform-merge-sibling-variables",
-      "transform-minify-booleans",
-      "minify-builtins",
-      [
-        "@babel/plugin-transform-property-mutators"
-      ],
-      [
-        "@babel/plugin-transform-reserved-words"
-      ],
-      "@babel/plugin-transform-runtime"
-    ],
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "debug": true,
-          "targets": "> 0.25%, not dead",
-          "useBuiltIns": "entry"
-        }
-      ]
-    ]
   },
   "resolutions": {
     "debug": "2.6.9",

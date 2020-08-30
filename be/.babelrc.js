@@ -1,4 +1,7 @@
 module.exports = (api) => {
+    api.assertVersion("^7.2");
+    api.cache.never();
+
     return {
         "plugins": [
             [ "@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true, } ],
