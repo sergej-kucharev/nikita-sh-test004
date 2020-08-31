@@ -12,7 +12,7 @@ import swig from 'swig';
 
 import { knex, models, } from '../db/knex'; 
 import Logger from './logger';
-import route from './routes';
+import routes from './routes';
 
 dotenv.config();
 
@@ -110,7 +110,7 @@ app.use((req, res, next) => {
 	res.set('cache-control', 'no-cache');
 	next();
 });
-app.use(route);
+app.use(routes);
 
 app.use((error, req, res, next) => {
 	if ([ 'production' ].includes(mode)) {
