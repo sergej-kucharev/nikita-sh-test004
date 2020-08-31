@@ -19,7 +19,13 @@ export const asyncStackTraces = true;
 export const fetchAsString = [ 'clob', ];
 export const useNullAsDefault = true;
 
-export const log = Logger('db:knex');
+const logger = Logger('db:knex');
+export const log = {
+  error: (text) => logger.error({ text }),
+  warn: (text) => logger.warn({ text }),
+  deprecate: (text) => logger.deprecate({ text }),
+  debug: (text) => logger.debug({ text }),
+};
 
 // export const pool = {
 //   min: 0,

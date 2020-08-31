@@ -1,4 +1,6 @@
 #!/usr/bin/env node
 
 require('@babel/register');
-require('./src/app.js');
+const server = require('./src/app.js');
+
+console.log(server);

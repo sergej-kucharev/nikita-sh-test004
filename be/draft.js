@@ -10,6 +10,6 @@ const TIMEOUT = 1000;
 (async () => {
     const now = await knex.select(knex.fn.now()).first().timeout(TIMEOUT);
     const auth = await models.Auth.query().findById(2).timeout(TIMEOUT);
-    logger.debug({ now });
-    logger.debug({ auth });
+    logger.debug({ data: now });
+    logger.debug({ data: auth });
 })();
