@@ -1,8 +1,8 @@
 import { Router, } from 'express';
+import multer from 'multer';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import { knex, models, } from '../lib/db';
-import multer from 'multer';
+import { knex, models, } from '../../../db/knex';
 import ah from 'express-async-handler';
 import validator from 'validator';
 
