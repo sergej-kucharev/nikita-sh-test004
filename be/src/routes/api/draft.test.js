@@ -1,15 +1,12 @@
-import dotenv from 'dotenv';
 import faker from 'faker';
 import frisby from 'frisby';
 import jest from 'jest';
-import { env, } from 'process';
-
-dotenv.config();
+import { env, } from '../../../env';
 
 describe('draft', () => {
-    it('env is test', () => expect(env.NODE_ENV).toBe('test'));
+    it('env is development', () => expect(env.NODE_ENV).toBe(env.NODE_ENV_EXPECTED ?? 'test'));
 
-    it('GET /draft success', async () => {
+    it('GET /api/draft success', async () => {
         await frisby
             .get(`${ env.URI_BASE }/draft`)
             .expect('status', 200);

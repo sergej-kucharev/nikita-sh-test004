@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-import { env, } from 'process';
+import { env, } from '../env';
+
 import http from 'http';
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -10,11 +10,9 @@ import passport from 'passport';
 import session from 'express-session';
 import swig from 'swig';
 
-import { knex, models, } from '../db/knex'; 
+// import { knex, models, } from '../db/knex';
 import Logger from './logger';
 import routes from './routes';
-
-dotenv.config();
 
 const app = express();
 const logger = Logger('app');

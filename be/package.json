@@ -19,11 +19,11 @@
     "db:knex:migrate:up": "source .env && npx knex migrate:up",
     "db:knex:seed:all": "source .env && npx knex seed:run",
     "db:knex:seed:one": "source .env && npx knex seed:run --specific=dummy.js",
-    "start:dev": "source .env.development && npx nodemon --inspect --exec babel-node index.js",
-    "start:draft": "source .env.draft && npx nodemon --inspect --exec babel-node draft.js",
-    "start:stage": "source .env.stage && npx nodemon --inspect --exec babel-node index.js",
-    "start:prod": "source .env.production && npx nodemon --inspect --exec babel-node index.js",
-    "test": "NODE_ENV=test npx jest --watch"
+    "start:dev": "NODE_ENV_EXPECTED=development && npx nodemon --inspect --exec babel-node index.js",
+    "start:draft": "NODE_ENV_EXPECTED=draft && npx nodemon --inspect --exec babel-node draft.js",
+    "start:stage": "NODE_ENV_EXPECTED=stage && npx nodemon --inspect --exec babel-node index.js",
+    "start:prod": "NODE_ENV_EXPECTED=production && npx nodemon --inspect --exec babel-node index.js",
+    "test": "NODE_ENV_EXPECTED=test npx jest --watch"
   },
   "version": "1.0.0",
   "dependencies": {

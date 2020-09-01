@@ -1,4 +1,5 @@
 import { Router, } from 'express';
+import { router as apiDraft } from './api/draft';
 // import auth from './auth';
 
 const router = Router({
@@ -8,5 +9,5 @@ const router = Router({
 });
 
 export default [
-	// ['/', auth],
+	['/api', apiDraft],
 ].reduce((router, route) => router.use(...route), router);
