@@ -3,7 +3,7 @@ import Logger from '../../../src/logger';
 
 export const client = 'sqlite3';
 export const connection = {
-  filename: './db/knex/data/test.sqlite3',
+  filename: './db/knex/data/stage.sqlite3',
 };
 export const migrations = {
   directory: './db/knex/migrations',
@@ -16,6 +16,7 @@ export const seeds = {
 
 export const acquireConnectionTimeout = 1000 * 8;
 export const asyncStackTraces = true;
+export const debug = true;
 export const fetchAsString = [ 'clob', ];
 export const useNullAsDefault = true;
 
