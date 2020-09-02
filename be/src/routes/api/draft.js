@@ -7,5 +7,5 @@ export const router = Router({
 });
 
 router.get('/draft', async(req, res) =>{
-	res.json({ success: true, });
+	res.json({ data: { success: true, } });
 });

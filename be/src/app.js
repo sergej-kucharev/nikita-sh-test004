@@ -16,7 +16,7 @@ import routes from './routes';
 
 const app = express();
 const logger = Logger('app');
-const mode = env.NODE_ENV ?? 'development';
+const mode = env.NODE_ENV;
 const port = env.PORT ?? 4000;
 const xPoweredBy = env.X_POWERED_BY ?? 'owner';
 const root = __dirname;
