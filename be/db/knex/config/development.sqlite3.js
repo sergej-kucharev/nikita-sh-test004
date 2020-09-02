@@ -22,10 +22,10 @@ export const useNullAsDefault = true;
 
 const logger = Logger('db:knex');
 export const log = {
-  error: (text) => logger.error({ text }),
-  warn: (text) => logger.warn({ text }),
-  deprecate: (text) => logger.deprecate({ text }),
-  debug: (text) => logger.debug({ text }),
+  error: (data) => logger.error({ data }),
+  warn: (data) => logger.warn({ data }),
+  deprecate: (data) => logger.deprecate({ data }),
+  debug: (data) => logger.debug({ data }),
 };
 
 // export const pool = {

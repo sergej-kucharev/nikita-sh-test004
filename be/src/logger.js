@@ -3,7 +3,11 @@ import Debug from 'debug';
 export default (...loggerKeys) => {
     const debugInstance = Debug(loggerKeys.join(':'));
     const log = (type, text, data) => {
-        const message = `[${ type }]: ${ text } with ${ data && JSON.stringify(data, null, '\t') }`;
+        let message = [
+            ...text ? [ JSON.stringify(text) ] : [],
+            ...data ? [ JSON.stringify(data, null, '\t') ] : [],
+        ].join(' with ');
+        message = `[${ type }]: ${ message }`;
         console.log(message);
         debugInstance(message);
     };
