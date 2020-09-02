@@ -127,6 +127,6 @@ app.use((error, req, res, next) => {
 });
 
 const server = http.createServer(app);
-server.listen(port, () => logger.debug(`Server started on port: ${port}.`));
+server.listen(port, () => logger.debug({ text: 'Server started', data: { port }, }));
 
 export default server;

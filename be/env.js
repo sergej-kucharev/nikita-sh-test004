@@ -13,7 +13,7 @@ if (!modeExpected) {
         NODE_ENV_EXPECTED: modeExpected,
     });
     throw new Error(`Error: env lacks property ${ json }`);
-} else if (Object.is(mode, modeExpected)) {
+} else if (!Object.is(mode, modeExpected)) {
     const json = JSON.stringify({
         NODE_ENV: mode,
         NODE_ENV_EXPECTED: modeExpected,
