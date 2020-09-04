@@ -34,4 +34,7 @@ describe('auth', () => {
         .inspectJSON()
         .expect('status', 401)
     );
+
+    // it('logout', )
+    // it('registration', )
 });
