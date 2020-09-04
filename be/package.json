@@ -19,7 +19,7 @@
     "db:knex:seed:all": "NODE_ENV_EXPECTED=none  npx knex seed:run",
     "db:knex:seed:one": "NODE_ENV_EXPECTED=none  npx knex seed:run --specific=dummy.js",
     "start:dev": "NODE_ENV_EXPECTED=development  npx nodemon --inspect --exec babel-node index.js",
-    "start:draft": "NODE_ENV_EXPECTED=draft  npx nodemon --inspect --exec babel-node draft.js",
+    "start:draft": "NODE_ENV_EXPECTED=development  npx nodemon --inspect --exec babel-node draft.js",
     "start:stage": "NODE_ENV_EXPECTED=stage  npx nodemon --inspect --exec babel-node index.js",
     "start:prod": "NODE_ENV_EXPECTED=production  npx nodemon --inspect --exec babel-node index.js",
     "test": "NODE_ENV_EXPECTED=test  npx jest --watch"
