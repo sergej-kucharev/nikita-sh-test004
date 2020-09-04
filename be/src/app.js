@@ -26,9 +26,13 @@ app.set('port', port);
 app.set('root', root);
 
 app.use((req, res, next) => {
-	const { body, headers, method, url, } = req;
-	logger.debug({ text: 'req', data: { method, url, headers, body } });
 	res.set('x-powered-by', xPoweredBy);
+	next();
+});
+
+app.use((req, res, next) => {
+	const { headers, method, url, } = req;
+	logger.debug({ text: 'Pre-fetched request', data: { method, url, headers } });
 	next();
 });
 
@@ -102,6 +106,12 @@ app.set('view engine', 'html');
 app.set('views', `${ root }/views`);
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
+
+app.use((req, res, next) => {
+	const { body, headers, method, url, } = req;
+	logger.debug({ text: 'dynamic request', data: { method, url, headers, body } });
+	next();
+});
 
 app.use((req, res, next) => {
 	res.set('pragma', 'no-cache');

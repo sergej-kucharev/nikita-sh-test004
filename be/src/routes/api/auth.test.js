@@ -4,15 +4,34 @@ import faker from 'faker';
 import frisby from 'frisby';
 import jest from 'jest';
 
-describe('auth', () => {
-    it('ok', () => expect(true).toBe(true));
-    
-    // it('env is development', () => expect(env?.NODE_ENV).toBe(env.NODE_ENV_EXPECTED));
+// https://docs.frisbyjs.com/
 
-    // it('login as root', () => frisby
-    //     .post(`${ env.URI_BASE }/login`, {
-    //         login: 'root',
-    //         password: 'root',
-    //     }).expect('status', 200)
-    // );
+describe('auth', () => {
+    it('success login as root', async () => await frisby
+        .post(`${ env.URI_BASE }/api/login`, {
+            login: 'root',
+            password: 'root',
+        })
+        .inspectHeaders()
+        .inspectJSON()
+        .expect('status', 200)
+        .expectNot('jsonTypes', '*', {
+            password: frisby.Joi.string()
+        })
+        .expect('jsonTypes', '*', {
+            id: frisby.Joi.number().required(),
+            login: frisby.Joi.string().required(),
+            created: frisby.Joi.date().iso().required(),
+        })
+    );
+
+    it('error login as root', async () => await frisby
+        .post(`${ env.URI_BASE }/api/login`, {
+            login: faker.internet.userName(),
+            password: faker.internet.password(),
+        })
+        .inspectHeaders()
+        .inspectJSON()
+        .expect('status', 401)
+    );
 });
