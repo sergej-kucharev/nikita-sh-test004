@@ -6,14 +6,14 @@ import jest from 'jest';
 
 // https://docs.frisbyjs.com/
 
-describe('auth', () => {
+describe('module auth', () => {
     it('success login as root', async () => await frisby
         .post(`${ env.URI_BASE }/api/login`, {
             login: 'root',
             password: 'root',
         })
-        .inspectHeaders()
-        .inspectJSON()
+        // .inspectHeaders()
+        // .inspectJSON()
         .expect('status', 200)
         .expectNot('jsonTypes', '*', {
             password: frisby.Joi.string()
@@ -25,15 +25,15 @@ describe('auth', () => {
         })
     );
 
-    it('error login as root', async () => await frisby
-        .post(`${ env.URI_BASE }/api/login`, {
-            login: faker.internet.userName(),
-            password: faker.internet.password(),
-        })
-        .inspectHeaders()
-        .inspectJSON()
-        .expect('status', 401)
-    );
+    // it('error login as random userName with random password', async () => await frisby
+    //     .post(`${ env.URI_BASE }/api/login`, {
+    //         login: faker.internet.userName(),
+    //         password: faker.internet.password(),
+    //     })
+    //     // .inspectHeaders()
+    //     // .inspectJSON()
+    //     .expect('status', 401)
+    // );
 
     // it('logout', )
     // it('registration', )
