@@ -1,5 +1,8 @@
 import { Model, } from 'objection';
 import moment from 'moment';
+import { default as Logger } from '../../../src/logger';
+
+const logger = Logger('db:model:auth');
 
 export default class extends Model {
 	static get tableName() { return 'auth'; };
@@ -46,6 +49,43 @@ export default class extends Model {
 			},
 		};
 	}
+
+	// app --> db
+	$parseJson(json, options) {
+		const { created, updated, deleted, ...tail } = json;
+		const data = {
+			...tail,
+			...created && moment(created).isValid() && { created: moment(created).utc().format() },
+			...updated && moment(updated).isValid() && { updated: moment(updated).utc().format() },
+			...deleted && moment(deleted).isValid() && { deleted: moment(deleted).utc().format() },
+		};
+		return super.$parseJson(data, options);
+	}
+
+	// app <-- db
+	$parseDatabaseJson(data) {
+		const json = super.$parseDatabaseJson(data);
+		const { created, updated, deleted, ...tail } = json;
+		return {
+			...tail,
+			...created && { created: moment(created), },
+			...updated && { updated: moment(updated), },
+			...deleted && { deleted: moment(deleted), },
+		};
+	}
+
+	// static beforeInsert(options) {
+	// 	logger.debug('!!!!beforeInsert');
+	// 	const { inputItems, } = options;
+	// 	let { authId, created, updated, deleted, login, password, ..._ } = inputItems;
+	// 	created = created ?? moment();
+	// 	if (!login || !password || !moment(created).isValid()) {
+	// 		throw new Error(`Auth.insert(${ JSON.stringify(inputItems) })`);
+	// 	}
+	// 	created = moment(created).utc().format();
+	// 	login = login.toLowerCase();
+	// 	return { ...options, inputItems: { ..._, login, password, created, }, };
+	// }
 
 	// async $beforeInsert(data) {
 	// 	console.log('$beforeInsert:', { data });
