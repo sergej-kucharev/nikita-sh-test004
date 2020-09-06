@@ -47,18 +47,18 @@ export default class extends Model {
 		};
 	}
 
-	async $beforeInsert(data) {
-		console.log('$beforeInsert:', { data });
-		await super.$beforeInsert(data);
-		let { authId, created, updated, deleted, login, password, ..._ } = data;
-		created = created ?? moment();
-		if (!login || !password || !moment(created).isValid()) {
-			throw new Error(`Auth.insert(${ JSON.stringify(data) })`);
-		}
-		created = moment(created).utc().format();
-		login = login.toLowerCase();
-		return { ..._, login, password, created, };
-	}
+	// async $beforeInsert(data) {
+	// 	console.log('$beforeInsert:', { data });
+	// 	await super.$beforeInsert(data);
+	// 	let { authId, created, updated, deleted, login, password, ..._ } = data;
+	// 	created = created ?? moment();
+	// 	if (!login || !password || !moment(created).isValid()) {
+	// 		throw new Error(`Auth.insert(${ JSON.stringify(data) })`);
+	// 	}
+	// 	created = moment(created).utc().format();
+	// 	login = login.toLowerCase();
+	// 	return { ..._, login, password, created, };
+	// }
 
 	// async $beforeUpdate(options, data) {
 	// 	console.log('$beforeUpdate:', { options, data });
