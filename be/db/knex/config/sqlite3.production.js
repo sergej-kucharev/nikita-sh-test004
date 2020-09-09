@@ -14,7 +14,7 @@ export const seeds = {
   tableName: 'seeds',
 };
 
-export const acquireConnectionTimeout = 1000 * 8;
+export const acquireConnectionTimeout = 1000 * 2;
 export const asyncStackTraces = true;
 export const debug = false;
 export const fetchAsString = [ 'clob', ];

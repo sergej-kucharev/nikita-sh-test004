@@ -2,7 +2,7 @@ import { env, } from '../../env';
 
 import Knex from 'knex';
 import { Model, } from 'objection';
-import configs from '../../knexfile.js';
+import configs from './config';
 import * as models from './models';
 
 const config = configs[env?.NODE_ENV];
