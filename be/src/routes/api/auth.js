@@ -20,7 +20,23 @@ router.get(
 		const { login, password, } = req.body;
 		console.log({ login, password, });
 		res.end('.');
-	}
+	},
+);
+
+router.get(
+	'/logout',
+	async(req, res) => {
+		res.end('.');
+	},
+);
+
+router.get(
+	'/registration',
+	async(req, res) => {
+		const { login, password, password2, } = req.body;
+		console.log({ login, password, password2, });
+		res.end('.');
+	},
 );
 
 // const upload = multer({dest:'./tmp'});
