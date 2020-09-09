@@ -53,11 +53,12 @@ export default class extends Model {
 	// app --> db
 	$parseJson(json, options) {
 		const { created, updated, deleted, ...tail } = json;
+		const format = (key, value) => value && moment(value).isValid() && { [key]: moment(value).utc().format() };
 		const data = {
 			...tail,
-			...created && moment(created).isValid() && { created: moment(created).utc().format() },
-			...updated && moment(updated).isValid() && { updated: moment(updated).utc().format() },
-			...deleted && moment(deleted).isValid() && { deleted: moment(deleted).utc().format() },
+			...format('created', created),
+			...format('updated', updated),
+			...format('deleted', deleted),
 		};
 		return super.$parseJson(data, options);
 	}

@@ -22,7 +22,7 @@ export const action = async (knex, items) => {
       .first();
     let auth = await findAuth({ authId, login, });
     if (!auth) {
-      await models.Auth.query().insert({ ...authId && { authId }, created: moment(), login, password, });
+      await models.Auth.query().insert({ ...authId && { authId }, created: moment().utc(), login, password, });
       auth = await findAuth({ authId, login, });
       console.log('Created auth seed:', auth);
     } else if (authId && auth.authId !== authId) {
