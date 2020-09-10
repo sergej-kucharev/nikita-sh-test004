@@ -6,6 +6,9 @@ export const router = Router({
 	strict: true,	
 });
 
-router.get('/draft', async(req, res) =>{
-	res.json({ data: { success: true, } });
-});
+router.get(
+	'/',
+	async(req, res) =>{
+		res.json({ data: { success: true, } });
+	}
+);

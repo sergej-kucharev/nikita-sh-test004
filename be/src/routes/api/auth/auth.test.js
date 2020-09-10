@@ -7,8 +7,8 @@ import jest from 'jest';
 // https://docs.frisbyjs.com/
 
 describe('module auth', () => {
-    it('success login as root', async () => await frisby
-        .post(`${ env.URI_BASE }/api/login`, {
+    it('success login as root', async() => await frisby
+        .post(`${ env.URI_BASE }/api/auth/login`, {
             login: 'root',
             password: 'root',
         })
@@ -25,8 +25,8 @@ describe('module auth', () => {
         })
     );
 
-    // it('error login as random userName with random password', async () => await frisby
-    //     .post(`${ env.URI_BASE }/api/login`, {
+    // it('error login as random userName with random password', async() => await frisby
+    //     .post(`${ env.URI_BASE }/api/auth/login`, {
     //         login: faker.internet.userName(),
     //         password: faker.internet.password(),
     //     })

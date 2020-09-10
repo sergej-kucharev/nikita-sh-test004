@@ -12,7 +12,7 @@ import swig from 'swig';
 
 // import { knex, models, } from '../db/knex';
 import Logger from './logger';
-import routes from './routes';
+import { router as routes } from './routes';
 
 const app = express();
 const logger = Logger('app');

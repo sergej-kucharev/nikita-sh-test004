@@ -1,11 +1,11 @@
 import { Router, } from 'express';
+import './passport';
+import { db1, } from '../../../../db';
 // import multer from 'multer';
-// import passport from 'passport';
-// import { Strategy as LocalStrategy } from 'passport-local';
-// import { knex, models, } from '../../../db/knex';
 // import ah from 'express-async-handler';
 // import validator from 'validator';
 
+const Auth = db1.models.Auth;
 
 export const router = Router({
 	caseSensitive: true,
@@ -41,29 +41,6 @@ router.get(
 
 // const upload = multer({dest:'./tmp'});
 
-
-// passport.use(new LocalStrategy({
-// 	usernameField: 'login',
-// 	passwordField: 'password',
-// 	passReqToCallback: true,
-// 	session: true,
-// }, async (req, login, password, done) => {
-// 	// const [user] = await knex.from('user').where({login, password});
-// 	const [user] = await models.user.query().where($ => $.where({login, password}));
-// 	if(user){ 
-// 		done(null,user);
-// 	}else{
-// 		done(new Error('user unknown!'));
-// 	}
-// }));
-// passport.serializeUser( async (user, done) => {
-// 	done(null, user.userId);
-// });
-// passport.deserializeUser( async (userId, done) => {
-// 	// const [user] = await knex.from('user').where({userId});
-// 	const [user] = await models.user.query().where($ => $.where({userId}));
-// 	done(user ? null : new Error('user unknown!'), user.toJSON());
-// });
 
 // router.get('/login', async(req, res) =>{
 // 	res.render('login-form', {});

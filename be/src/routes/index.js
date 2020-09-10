@@ -1,15 +1,17 @@
 import { Router, } from 'express';
-import { router as apiDraft } from './api/draft';
-import { router as apiAuth } from './api/auth';
-// import auth from './auth';
+import api from './api';
+// import page from './page';
 
-const router = Router({
+export const router = Router({
 	caseSensitive: true,
 	mergeParams: true,
 	strict: true,	
 });
 
-export default [
-	['/api/auth', apiAuth],
-	['/api', apiDraft],
-].reduce((router, route) => router.use(...route), router);
+api.forEach(([ path, call ]) => {
+	router.use(path, call);
+});
+
+// page.forEach(([ path, call ]) => {
+// 	router.use(path, call);
+// });
