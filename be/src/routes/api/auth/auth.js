@@ -1,5 +1,5 @@
 import { Router, } from 'express';
-import './passport';
+import { passport, isAdmin, } from './passport';
 import { db1, } from '../../../../db';
 // import multer from 'multer';
 // import ah from 'express-async-handler';
@@ -16,7 +16,10 @@ export const router = Router({
 
 router.get(
 	'/login',
+	passport.authenticate('local'),
+	isAdmin,
 	async(req, res) => {
+		console.log('222', req.user, req.auth);
 		const { login, password, } = req.body;
 		console.log({ login, password, });
 		res.end('.');

@@ -2,6 +2,7 @@ import { env, } from '../env';
 
 import http from 'http';
 import express from 'express';
+import compression from 'compression';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -69,6 +70,8 @@ app.use(cors({
 // 		preflightContinue: false,
 // 	});
 // }));
+
+app.use(compression());
 
 app.use(express.static('asset', {
 	dotfiles: 'ignore',
