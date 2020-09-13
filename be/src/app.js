@@ -101,7 +101,7 @@ app.use(session({
 	saveUninitialized: false,
 	unset: 'keep',
 }));
-app.use(passport.initialize());
+app.use(passport.initialize({ userProperty: 'auth', }));
 app.use(passport.session());
 
 app.engine('html', swig.renderFile);

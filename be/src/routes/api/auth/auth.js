@@ -1,5 +1,5 @@
 import { Router, } from 'express';
-import { passport, isAdmin, } from './passport';
+import { access, notAuthenticated, passport, } from '../../../passport';
 import { db1, } from '../../../../db';
 // import multer from 'multer';
 // import ah from 'express-async-handler';
@@ -16,29 +16,41 @@ export const router = Router({
 
 router.get(
 	'/login',
+	notAuthenticated,
 	passport.authenticate('local'),
-	isAdmin,
+	access(),
+	// isAdmin,
 	async(req, res) => {
-		console.log('222', req.user, req.auth);
-		const { login, password, } = req.body;
-		console.log({ login, password, });
-		res.end('.');
+		res.json({ login: true, authenticated: req.isAuthenticated(), });
+	},
+);
+
+router.get(
+	'/logined',
+	access('root'),
+	async(req, res) => {
+		res.json({ logined: true, auth: req.auth, });
 	},
 );
 
 router.get(
 	'/logout',
+	access(),
 	async(req, res) => {
-		res.end('.');
+		req.logOut();
+		req.session.destroy((error) => {
+			error ? next(error) : res.json({ logout: true, authenticated: req.isAuthenticated(), });
+		});
 	},
 );
 
 router.get(
 	'/registration',
+	notAuthenticated,
 	async(req, res) => {
-		const { login, password, password2, } = req.body;
-		console.log({ login, password, password2, });
-		res.end('.');
+		const { login, password, password2, code, } = req.body;
+		console.log({ login, password, password2, code, });
+		res.json({ registration: true, });
 	},
 );
 

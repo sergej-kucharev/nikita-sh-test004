@@ -14,6 +14,7 @@
   "name": "test003",
   "private": true,
   "scripts": {
+    "init": "yarn install",
     "db:knex:migrate:down": "NODE_ENV_EXPECTED=none  npx knex migrate:down",
     "db:knex:migrate:up": "NODE_ENV_EXPECTED=none  npx knex migrate:up",
     "db:knex:seed:all": "NODE_ENV_EXPECTED=none  npx knex seed:run",
