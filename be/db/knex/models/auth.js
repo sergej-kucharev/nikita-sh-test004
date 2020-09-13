@@ -1,4 +1,5 @@
 import { Model, } from 'objection';
+import _ from 'lodash';
 import moment from 'moment';
 import { default as Logger } from '../../../src/logger';
 
@@ -48,6 +49,16 @@ export default class extends Model {
 				},
 			},
 		};
+	}
+
+	get $secureFields() {
+		return ['password', ];
+	}
+
+	// hide fields
+	$formatJson(jsonRaw) {
+		const json = super.$formatJson(jsonRaw);
+		return _.pick(json, ['authId', 'login', 'active', 'created', 'updated', 'deleted', ]);
 	}
 
 	// app --> db
