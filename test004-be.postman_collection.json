@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cd958ed5-b192-4c65-908f-3e0e32f8d562",
+		"_postman_id": "be020145-f713-4940-bcc6-f728025f1042",
 		"name": "test004-be",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,7 +9,7 @@
 			"name": "auth",
 			"item": [
 				{
-					"name": "/api/auth/login",
+					"name": "/api/auth/login [root]",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -39,6 +39,84 @@
 					"response": []
 				},
 				{
+					"name": "/api/auth/login [test]",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"login\": \"test\",\n\t\"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URI:API}}/auth/login",
+							"host": [
+								"{{URI:API}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/login [unknown]",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"login\": \"unknown\",\n\t\"password\": \"unknown\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URI:API}}/auth/login",
+							"host": [
+								"{{URI:API}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/auth/logined",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URI:API}}/auth/logined",
+							"host": [
+								"{{URI:API}}"
+							],
+							"path": [
+								"auth",
+								"logined"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "/api/auth/logout",
 					"request": {
 						"method": "GET",
@@ -58,9 +136,21 @@
 				},
 				{
 					"name": "/api/auth/registration",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\": \"test1\",\n    \"password\": \"test1\",\n    \"password2\": \"test1\",\n    \"code\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{URI:API}}/auth/registration",
 							"host": [
@@ -82,7 +172,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "25a1761f-bdfa-4252-af67-2d240e6980ac",
+				"id": "7e69bf7e-5774-4d98-8d0a-581f1a37ff5a",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -92,7 +182,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "d1e29804-7613-4c90-83d2-241ee6221bff",
+				"id": "417a795c-01ff-4adc-b421-8368b9a402a1",
 				"type": "text/javascript",
 				"exec": [
 					""
