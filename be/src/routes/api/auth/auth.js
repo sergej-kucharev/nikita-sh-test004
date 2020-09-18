@@ -1,11 +1,11 @@
 import { Router, } from 'express';
 import { access, notAuthenticated, passport, } from '../../../passport';
+import moment from 'moment';
 import { db1, } from '../../../../db';
 // import multer from 'multer';
 // import ah from 'express-async-handler';
 // import validator from 'validator';
 
-const Auth = db1.models.Auth;
 
 export const router = Router({
 	caseSensitive: true,
@@ -19,7 +19,6 @@ router.get(
 	notAuthenticated,
 	passport.authenticate('local'),
 	access(),
-	// isAdmin,
 	async(req, res) => {
 		res.json({ login: true, authenticated: req.isAuthenticated(), });
 	},
@@ -47,10 +46,32 @@ router.get(
 router.get(
 	'/registration',
 	notAuthenticated,
-	async(req, res) => {
-		const { login, password, password2, code, } = req.body;
-		console.log({ login, password, password2, code, });
-		res.json({ registration: true, });
+	async(req, res, next) => {
+		try {
+			const { login, password, password2, code, } = req.body;
+			console.log({ login, password, password2, code, });
+			if (!login || !passport || !code) {
+				throw new Error(`Registration params required`);
+			} else if (passport===password2) {
+				throw new Error(`Passwords not match`);
+			}
+			const query = () => db1.models.Auth.query();
+			const auth = await query().findOne({ login });
+			if (auth) {
+				throw new Error(`Login is busy`);
+			} else {
+				await query().insert({
+					login,
+					password,
+					active: true,
+					created: moment(),
+				});
+				const auth = await query().findOne({ login });
+				res.json({ registration: true, auth, });
+			}
+		} catch (error) {
+			next(error);
+		}
 	},
 );
 

@@ -58,7 +58,7 @@ export default class extends Model {
 	// hide fields
 	$formatJson(jsonRaw) {
 		const json = super.$formatJson(jsonRaw);
-		return _.pick(json, ['authId', 'login', 'active', 'created', 'updated', 'deleted', ]);
+		return _.omit(json, ['password', ]);
 	}
 
 	// app --> db
