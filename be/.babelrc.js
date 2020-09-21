@@ -29,6 +29,7 @@ module.exports = (api) => {
             [ "@babel/plugin-transform-property-mutators", {} ],
             [ "@babel/plugin-transform-reserved-words", {} ],
             "@babel/plugin-transform-runtime",
+            "babel-plugin-operator-overloading",
         ],
         "presets": [
             [
